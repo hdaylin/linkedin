@@ -11,16 +11,20 @@
     <h1>Your Resume <small>Linkedin</small></h1>
 </div>
 
+
 <table class="table table-striped">
     <tr>
         <th>Degree</th>
         <th>College</th>
         <th>Year</th>
+
     </tr>
-    <tr th:each="item : ${education}">
-        <td th:text="${item.degree}"></td>
-        <td th:text="${item.college}"></td>
-        <td th:text="${item.year}"></td>
+    <tr th:each="row : ${education}">
+        <td></td>
+        <td th:text="${row.degree}"></td>
+        <td th:text="${row.college}"></td>
+        <td th:text="${row.year}"></td>
+
     </tr>
 </table>
 

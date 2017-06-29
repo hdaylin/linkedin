@@ -1,12 +1,32 @@
 package com.example.demo.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by student on 6/28/17.
  */
+
+@Entity
 public class Experience {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private int id;
     private String company;
     private String role;
     private String time;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCompany() {
         return company;
