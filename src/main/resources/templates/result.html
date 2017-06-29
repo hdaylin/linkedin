@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html lang="en" xmlns:th="www.thymeleaf.org" >
+<head th:replace="base :: head" >
+    <meta charset="UTF-8" />
+    <title>Linkedin</title>
 </head>
 <body>
-$END$
+
+
+<div class="page-header">
+    <h1>Your Resume <small>Linkedin</small></h1>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Degree</th>
+        <th>College</th>
+        <th>Year</th>
+    </tr>
+    <tr th:each="item : ${education}">
+        <td th:text="${item.degree}"></td>
+        <td th:text="${item.college}"></td>
+        <td th:text="${item.year}"></td>
+    </tr>
+</table>
+
+
 </body>
 </html>
