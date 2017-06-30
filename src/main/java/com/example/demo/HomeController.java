@@ -38,11 +38,12 @@ ExperienceRepository experienceRepository;
         model.addAttribute("row", educationRepository.findAll());
         return "build";
     }
-    @PostMapping("/build")
-    public String resumeBuild(@Valid Education education, Model model, BindingResult bindingResult){
-        model.addAttribute("education", new Education());
+    @PostMapping("/show")
+    public String resumeBuild(@Valid Education education,  BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+        return "build";
+    }
         educationRepository.save(education);
-        model.addAttribute("row", educationRepository.findAll());
         return "result";
     }
 
@@ -52,6 +53,21 @@ ExperienceRepository experienceRepository;
         model.addAttribute("row", educationRepository.findAll());
         return "result";
     }
+
+
+    @GetMapping("/exp")
+    public String getExp(Model model){
+        model.addAttribute(new Experience());
+        model.addAttribute("row", experienceRepository.findAll());
+        return "experience";
+
+
+
+    }
+
+
+
+
 }
 
 

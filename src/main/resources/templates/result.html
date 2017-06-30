@@ -4,30 +4,26 @@
     <meta charset="UTF-8" />
     <title>Linkedin</title>
 </head>
-<body>
+<body th:each="row : ${education}">
+
+<div class="container">
+    <div class="page-header">
+        <h1>Your Resume <small>Linkedin</small></h1>
+    </div>
 
 
-<div class="page-header">
-    <h1>Your Resume <small>Linkedin</small></h1>
+    <h3>Education</h3>
+    <p th:each="row : ${education}"></p>
+    <p th:text="${row.college + ', ' +row.year}"></p>
+    <p th:text="${row.degree}"></p>
+
+
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
 </div>
-
-
-<table class="table table-striped">
-    <tr>
-        <th>Degree</th>
-        <th>College</th>
-        <th>Year</th>
-
-    </tr>
-    <tr th:each="row : ${education}">
-        <td></td>
-        <td th:text="${row.degree}"></td>
-        <td th:text="${row.college}"></td>
-        <td th:text="${row.year}"></td>
-
-    </tr>
-</table>
-
-
 </body>
 </html>
