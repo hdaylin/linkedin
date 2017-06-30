@@ -34,6 +34,11 @@ SkillsRepository skillsRepository;
         return "index";
     }
 
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/create")
     public String getEdu(Model model){
         model.addAttribute(new Education());
@@ -94,6 +99,7 @@ SkillsRepository skillsRepository;
     }
 
             /* End of Skills Repository */
+
 
 }
 
