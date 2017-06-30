@@ -63,13 +63,12 @@ SkillsRepository skillsRepository;
     @PostMapping("/display")
     public String resumeExp(@Valid Experience experience, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            return "result";
+            return "experience";
         }
 
         experienceRepository.save(experience);
         model.addAttribute("experience", experienceRepository.findAll());
-        model.addAttribute("education", educationRepository.findAll());
-        return "result";
+        return "redirect:/add";
     }
 
     /*  End of Experience Repository   */
@@ -89,12 +88,12 @@ SkillsRepository skillsRepository;
         }
         skillsRepository.save(skills);
         model.addAttribute("skill", skillsRepository.findAll());
+        model.addAttribute("experience", experienceRepository.findAll());
+        model.addAttribute("education", educationRepository.findAll());
         return "result";
     }
 
-
-
-
+            /* End of Skills Repository */
 
 }
 
