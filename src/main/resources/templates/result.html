@@ -19,6 +19,22 @@
         <br/>
     </div>
 
+    <h3>Experience</h3>
+    <div th:each="item  : ${experience}">
+        <p th:text="${item.company}"></p>
+        <p th:text="${item.role}"></p>
+        <p th:text="${item.time}"></p>
+        <p th:text="${item.duty}"></p>
+        <br/>
+    </div>
+
+    <h3>Skills</h3>
+    <div th:each="list : ${skill}">
+        <p th:text="${list.name + ', ' + list.level}"></p>
+        <br/>
+    </div>
+
+
     <nav aria-label="...">
         <ul class="pager">
             <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>

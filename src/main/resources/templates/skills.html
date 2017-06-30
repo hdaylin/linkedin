@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html lang="en" xmlns:th="www.thymeleaf.org" >
+<head th:replace="base :: head" >
+    <meta charset="UTF-8" />
+    <title>Linkedin</title>
 </head>
 <body>
-$END$
+<div class="page-header">
+    <h1>Build Your Resume <small>linkedin</small></h1>
+</div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+
+
+<div class="container">
+    <h1>Experience</h1>
+    <form th:action="@{/skills}" th:object="${skills}" method = "post">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Skill Name</label>
+            <div class="col-sm-10">
+                <input type="text" th:field="*{name}"  class="form-control" id="name" placeholder="name"/>
+            </div>
+        </div>
+
+        <select name="level" class="selectpicker" th:field="*{level}" type="text" data-style="btn-info btn-fill btn-block">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">intermediate</option>
+            <option value="expert">expert</option>
+        </select>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+
+
+            <!-- <div class="offset-sm-2 col-sm-10">
+
+             <p><a class="btn btn-success" href="/experience" role="button">Next</a></p>
+             </div>
+             -->
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="next"><a href="/add"> Resume Builder</a></li>
+                </ul>
+            </nav>
+
+
+        </div>
+    </form>
+</div>
 </body>
 </html>

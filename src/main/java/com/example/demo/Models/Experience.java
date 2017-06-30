@@ -18,7 +18,15 @@ public class Experience {
     private String company;
     private String role;
     private String time;
+    private String duty;
 
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty;
+    }
 
     public int getId() {
         return id;

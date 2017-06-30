@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Models.Education;
-import com.example.demo.Models.EducationRepository;
-import com.example.demo.Models.Experience;
-import com.example.demo.Models.ExperienceRepository;
+import com.example.demo.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +19,14 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
 @Autowired
-
 EducationRepository educationRepository;
+
+@Autowired
 ExperienceRepository experienceRepository;
+
+@Autowired
+SkillsRepository skillsRepository;
+
 
 
     @RequestMapping("/")
@@ -46,41 +48,53 @@ ExperienceRepository experienceRepository;
 
         educationRepository.save(education);
         model.addAttribute("education", educationRepository.findAll());
-        return "result";
+        return "redirect:/create";
     }
 
    /*  End of Education Repository   */
 
 
-    @RequestMapping("/experience")
-    public String index(Model model) {
-        model.addAttribute("row", new Experience());
+    @GetMapping("/add")
+    public String getExp(Model model){
+        model.addAttribute(new Experience());
+        model.addAttribute("item", experienceRepository.findAll());
         return "experience";
     }
-    @RequestMapping("/add")
-    public String addlinks(@Valid Experience experience, BindingResult bindingResult, Model model){
-
-        model.addAttribute("experience", new Experience());
-      /*  model.addAttribute("link", new Experience());
-
+    @PostMapping("/display")
+    public String resumeExp(@Valid Experience experience, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            model.addAttribute("row", experienceRepository.findAll());
-            return "index";
+            return "result";
         }
 
         experienceRepository.save(experience);
-
-        model.addAttribute("links", experienceRepository.findAll());
-        return "experience";*/
-
-
-            if (bindingResult.hasErrors()){
-                return "build";
-            }
-            experienceRepository.save(experience);
-            return "experience";
-
+        model.addAttribute("experience", experienceRepository.findAll());
+        model.addAttribute("education", educationRepository.findAll());
+        return "result";
     }
+
+    /*  End of Experience Repository   */
+
+
+    @GetMapping("/skill")
+    public String getSk(Model model){
+        model.addAttribute(new Skills());
+        model.addAttribute("list", skillsRepository.findAll());
+        return "skills";
+    }
+
+    @PostMapping("/skills")
+    public String resumeSk(@Valid Skills skills, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            return "skills";
+        }
+        skillsRepository.save(skills);
+        model.addAttribute("skill", skillsRepository.findAll());
+        return "result";
+    }
+
+
+
+
 
 }
 
