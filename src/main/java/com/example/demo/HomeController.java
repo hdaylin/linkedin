@@ -39,34 +39,48 @@ ExperienceRepository experienceRepository;
         return "build";
     }
     @PostMapping("/show")
-    public String resumeBuild(@Valid Education education,  BindingResult bindingResult){
+    public String resumeBuild(@Valid Education education, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
         return "build";
     }
+
         educationRepository.save(education);
+        model.addAttribute("education", educationRepository.findAll());
         return "result";
     }
 
-    @RequestMapping("/all")
-    public String getAllEdu(Model model)
-    {
-        model.addAttribute("row", educationRepository.findAll());
-        return "result";
-    }
+   /*  End of Education Repository   */
 
 
-    @GetMapping("/exp")
-    public String getExp(Model model){
-        model.addAttribute(new Experience());
-        model.addAttribute("row", experienceRepository.findAll());
+    @RequestMapping("/experience")
+    public String index(Model model) {
+        model.addAttribute("row", new Experience());
         return "experience";
+    }
+    @RequestMapping("/add")
+    public String addlinks(@Valid Experience experience, BindingResult bindingResult, Model model){
+
+        model.addAttribute("experience", new Experience());
+      /*  model.addAttribute("link", new Experience());
+
+        if (bindingResult.hasErrors()){
+            model.addAttribute("row", experienceRepository.findAll());
+            return "index";
+        }
+
+        experienceRepository.save(experience);
+
+        model.addAttribute("links", experienceRepository.findAll());
+        return "experience";*/
 
 
+            if (bindingResult.hasErrors()){
+                return "build";
+            }
+            experienceRepository.save(experience);
+            return "experience";
 
     }
-
-
-
 
 }
 

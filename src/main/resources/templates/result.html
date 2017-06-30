@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Linkedin</title>
 </head>
-<body th:each="row : ${education}">
+<body>
 
 <div class="container">
     <div class="page-header">
@@ -13,10 +13,11 @@
 
 
     <h3>Education</h3>
-    <p th:each="row : ${education}"></p>
+    <div th:each="row : ${education}">
     <p th:text="${row.college + ', ' +row.year}"></p>
     <p th:text="${row.degree}"></p>
-
+        <br/>
+    </div>
 
     <nav aria-label="...">
         <ul class="pager">
