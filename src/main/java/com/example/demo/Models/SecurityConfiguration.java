@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/Daylin");
         dataSource.setUsername("root");
-        dataSource.setPassword("Winterto2");
+        dataSource.setPassword("password");
 
         return dataSource;
     }
