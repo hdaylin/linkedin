@@ -92,14 +92,25 @@ SkillsRepository skillsRepository;
             return "skills";
         }
         skillsRepository.save(skills);
-        model.addAttribute("skill", skillsRepository.findAll());
+        model.addAttribute("skills", skillsRepository.findAll());
+        return "redirect:/skill";
+    }
+  /* End of Skills Repository */
+
+    @RequestMapping("/resume")
+    public String listBooks(Model model){
+        model.addAttribute("skills", skillsRepository.findAll());
         model.addAttribute("experience", experienceRepository.findAll());
         model.addAttribute("education", educationRepository.findAll());
         return "result";
     }
 
-            /* End of Skills Repository */
 
+    @RequestMapping("/school")
+    public String getSchools(@Valid Education education, Model model){
+       model.addAttribute("college", educationRepository.findAllByCollege(""));
+       return "school";
+    }
 
 
 }

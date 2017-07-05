@@ -5,16 +5,19 @@
     <title>Build Your Resume</title>
 </head>
 <body>
+<nav th:replace="base :: nav"></nav>
+<div class="container">
 <div class="page-header">
     <h1>Build Your Resume <small>linkedin</small></h1>
 </div>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
-    <li><a href="#">Library</a></li>
-    <li class="active">Data</li>
+    <li><a href="/create">Education</a></li>
+    <li><a href="/add">Experience</a></li>
+    <li><a href="/skill">Skills</a></li>
 </ol>
 
-<div class="container">
+
     <h1>Education</h1>
     <form th:action="@{/show}" th:object="${education}" method = "post">
         <div class="form-group row">
