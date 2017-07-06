@@ -25,6 +25,9 @@
 <div class ="wrapper">
 
     <div class="container">
+        <div class="alert alert-success" th:if="${message !=null}"role="alert">
+            <p th:text="${message}"/>
+        </div>
 
         <br />
         <div th:if="${param.error}">
@@ -47,6 +50,7 @@
         </form>
     </div><!-- /.container -->
 </div>
+
 <th:block th:replace="base :: footlinks"></th:block>
 </body>
 </html>

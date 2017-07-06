@@ -27,6 +27,9 @@ public class HomeController {
     @Autowired
     SkillsRepository skillsRepository;
 
+    @Autowired
+    JobRepository jobRepository;
+
 
 
     @RequestMapping("/")
@@ -106,11 +109,39 @@ public class HomeController {
     }
 
 
+
+
+
+    @GetMapping("/post")
+    public String getJobForm(Model model){
+        model.addAttribute(new Job());
+        model.addAttribute("post", jobRepository.findAll());
+        return "jobform";
+    }
+    @PostMapping("/post")
+    public String jobPost(@Valid Job job, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            return "redirect:/post";
+        }
+
+        jobRepository.save(job);
+        model.addAttribute("postings", jobRepository.findAll());
+        return "redirect:/post";
+    }
+
+    @RequestMapping("/jobs")
+    public String showJobs(Model model){
+        model.addAttribute("job", jobRepository.findAll());
+        return "jobs";
+    }
+
+
     @RequestMapping("/school")
     public String getSchools(@Valid Education education, Model model){
         model.addAttribute("college", educationRepository.findAllByCollege(""));
         return "school";
     }
+
 
 
 }

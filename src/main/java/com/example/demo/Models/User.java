@@ -27,7 +27,16 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+    private String myrole;
 
+
+    public String getMyrole() {
+        return myrole;
+    }
+
+    public void setMyrole(String myrole) {
+        this.myrole = myrole;
+    }
 
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
         this.email = email;

@@ -22,8 +22,10 @@ public class Dataloader implements CommandLineRunner{
         System.out.println("Loading data . . .");
         roleRepository.save(new Role("USER"));
         roleRepository.save(new Role("ADMIN"));
+        roleRepository.save(new Role("RECRUITER"));
         Role adminRole = roleRepository.findByRole("ADMIN");
         Role userRole = roleRepository.findByRole("USER");
+        Role recruiterRole = roleRepository.findByRole("RECRUITER");
         User user = new User("bob@bob.com","bob","Bob","Bobberson", true, "bob");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList(userRole));

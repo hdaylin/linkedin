@@ -17,13 +17,11 @@ public class Role {
     private Collection<User> users;
 
 
-
     public Role(String role) {
         this.role = role;
     }
     public Role() {
     }
-
 
     public String getRole() {
         return role;

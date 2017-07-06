@@ -34,7 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/" , "/register").permitAll()
+                .antMatchers("/" , "/register", "/jobs").permitAll()
+                .antMatchers("/posts").hasRole("RECRUITER")
                 .antMatchers("/assets/css/**").permitAll()
                 .antMatchers("/bootstrap3/**").permitAll()
                 .anyRequest().authenticated()
@@ -52,6 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         auth.inMemoryAuthentication().withUser("user").password("password").roles("USER")
                 .and()
                 .withUser("root").password("password").roles("ADMIN");
+
+
         auth
                 .userDetailsService(userDetailsServiceBean())
                 .passwordEncoder(encoder());
