@@ -18,14 +18,14 @@ import javax.validation.Valid;
 
 @Controller
 public class HomeController {
-@Autowired
-EducationRepository educationRepository;
+    @Autowired
+    EducationRepository educationRepository;
 
-@Autowired
-ExperienceRepository experienceRepository;
+    @Autowired
+    ExperienceRepository experienceRepository;
 
-@Autowired
-SkillsRepository skillsRepository;
+    @Autowired
+    SkillsRepository skillsRepository;
 
 
 
@@ -48,8 +48,8 @@ SkillsRepository skillsRepository;
     @PostMapping("/show")
     public String resumeBuild(@Valid Education education, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-        return "build";
-    }
+            return "build";
+        }
 
         educationRepository.save(education);
         model.addAttribute("education", educationRepository.findAll());
@@ -68,7 +68,7 @@ SkillsRepository skillsRepository;
     @PostMapping("/display")
     public String resumeExp(@Valid Experience experience, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            return "experience";
+            return "redirect:/add";
         }
 
         experienceRepository.save(experience);
@@ -108,11 +108,9 @@ SkillsRepository skillsRepository;
 
     @RequestMapping("/school")
     public String getSchools(@Valid Education education, Model model){
-       model.addAttribute("college", educationRepository.findAllByCollege(""));
-       return "school";
+        model.addAttribute("college", educationRepository.findAllByCollege(""));
+        return "school";
     }
 
 
 }
-
-

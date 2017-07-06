@@ -3,5 +3,9 @@ package com.example.demo.Models;
 /**
  * Created by daylinhenry on 7/5/17.
  */
-public interface RoleRepository {
+import org.springframework.data.repository.CrudRepository;
+public interface RoleRepository extends CrudRepository<Role, Long>{
+
+    Role findByRole(String role);
+
 }
