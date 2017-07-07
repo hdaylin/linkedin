@@ -5,12 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 /**
  * Created by student on 6/28/17.
@@ -30,10 +29,19 @@ public class HomeController {
     @Autowired
     JobRepository jobRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
 
 
     @RequestMapping("/")
-    public String index(){
+    public String index(Model model, Principal principal, @RequestParam("skill") String skill){
+//      String username = principal.getName();
+//      User user =userRepository.findByUsername(username);
+//      skillsRepository.findAllByName(skill);
+//      skill = user.getMyskills();
+//      System.out.println(skill);
+      //model.addAttribute("myjobs", jobRepository.findBySkillContaining(skill));
         return "index";
     }
 
@@ -109,9 +117,6 @@ public class HomeController {
     }
 
 
-
-
-
     @GetMapping("/post")
     public String getJobForm(Model model){
         model.addAttribute(new Job());
@@ -126,6 +131,7 @@ public class HomeController {
 
         jobRepository.save(job);
         model.addAttribute("postings", jobRepository.findAll());
+        System.out.println(job);
         return "redirect:/post";
     }
 
@@ -135,12 +141,12 @@ public class HomeController {
         return "jobs";
     }
 
-
     @RequestMapping("/school")
     public String getSchools(@Valid Education education, Model model){
         model.addAttribute("college", educationRepository.findAllByCollege(""));
         return "school";
     }
+
 
 
 

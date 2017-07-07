@@ -43,7 +43,7 @@
 
         <ul class="nav navbar-nav navbar-right">
 
-            <li sec:authorize= "hasRole('ROLE_RECRUITER')"><a href="/post">Post Job Listing</a></li>
+            <li sec:authorize= "hasAuthority('RECRUITER')"><a href="/post">Post Job Listing</a></li>
 
             <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
 

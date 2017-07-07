@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import java.util.Collection;
 import java.util.Set;
 @Entity
+@Table(name ="userData")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +29,27 @@ public class User {
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
     private String myrole;
+    @ManyToMany(mappedBy = "users")
+    private Set<Skills> skills;
+
+
+    public Set<Skills> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skills> skills) {
+        this.skills = skills;
+    }
+
+    public String getMyskills() {
+        return myskills;
+    }
+
+    public void setMyskills(String myskills) {
+        this.myskills = myskills;
+    }
+
+    private String myskills;
 
 
     public String getMyrole() {
