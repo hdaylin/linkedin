@@ -35,7 +35,7 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String index(Model model, Principal principal, @RequestParam("skill") String skill){
+    public String index(/*Model model, Principal principal, @RequestParam("skill") String skill*/){
 //      String username = principal.getName();
 //      User user =userRepository.findByUsername(username);
 //      skillsRepository.findAllByName(skill);
