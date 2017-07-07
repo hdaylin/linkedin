@@ -52,7 +52,7 @@ public class HomeController {
 
     @GetMapping("/create")
     public String getEdu(Model model){
-        model.addAttribute("edu", new Education());
+        model.addAttribute(new Education());
         model.addAttribute("row", educationRepository.findAll());
         return "build";
     }
@@ -72,7 +72,7 @@ public class HomeController {
 
     @GetMapping("/add")
     public String getExp(Model model){
-        model.addAttribute("experience", new Experience());
+        model.addAttribute(new Experience());
         model.addAttribute("item", experienceRepository.findAll());
         return "experience";
     }
@@ -119,7 +119,7 @@ public class HomeController {
 
     @GetMapping("/post")
     public String getJobForm(Model model){
-        model.addAttribute("job", new Job());
+        model.addAttribute(new Job());
         model.addAttribute("post", jobRepository.findAll());
         return "jobform";
     }
