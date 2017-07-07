@@ -16,7 +16,7 @@ public interface JobRepository extends CrudRepository<Job, Integer> {
 
    @Transactional
    @Modifying
-   @Query(value = "SELECT distinct job.employer FROM Job, Skills WHERE Job.Skill LIKE CONCAT('%', :skill,'%')", nativeQuery = true)
+   @Query(value = "SELECT job.employer FROM Job, Skills WHERE Job.Skill LIKE CONCAT('%', :skill,'%')", nativeQuery = true)
    List <String> findBySkillContaining(String skill);
 
 
