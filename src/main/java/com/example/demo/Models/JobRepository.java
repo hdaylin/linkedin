@@ -22,7 +22,7 @@ public interface JobRepository extends CrudRepository<Job, Integer> {
 //
 
 
-    Long countByTitle(String title);
+   // Long countByTitle(String title);
  /*   @Query
     ArrayList<Job> findDistinctBySkillContaining(String Skill)*/
 
