@@ -15,11 +15,11 @@ import java.util.ArrayList;
  */
 public interface JobRepository extends CrudRepository<Job, Integer> {
 
-    @Transactional
-    @Modifying
-    @Query(value = "SELECT distinct job.employer FROM Job, Skills WHERE Job.Skill LIKE CONCAT('%', :skill,'%')", nativeQuery = true)
-    List <String> findBySkillContaining(String skill);
-
+//    @Transactional
+//    @Modifying
+//    @Query(value = "SELECT distinct job.employer FROM Job, Skills WHERE Job.Skill LIKE CONCAT('%', :skill,'%')", nativeQuery = true)
+//    List <String> findBySkillContaining(String skill);
+//
 
 
     Long countByTitle(String title);
